@@ -7,6 +7,29 @@ const App = () => {
     { one: 5, two: 11, three: 16, four: 23, five: 32 },
   ]);
 
+  const randomNumbers = () => {
+    const numbers: number[] = [];
+
+    while (numbers.length < 5) {
+      const random = Math.floor(Math.random() * 36) + 1;
+
+      if (!numbers.includes(random)) {
+        numbers.push(random);
+      }
+    }
+
+    numbers.sort((a, b) => a - b);
+    setNumber([
+      {
+        one: numbers[0],
+        two: numbers[1],
+        three: numbers[2],
+        four: numbers[3],
+        five: numbers[4],
+      },
+    ]);
+  };
+
   return (
     <>
       <h1>Лотерея !</h1>
@@ -17,7 +40,9 @@ const App = () => {
         four={number[0].four}
         five={number[0].five}
       ></Circles>
-      <button className="btn">Нажми</button>
+      <button className="btn" onClick={randomNumbers}>
+        New numbers
+      </button>
     </>
   );
 };
